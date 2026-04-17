@@ -12,7 +12,48 @@ class Program
         // LikesCounter();
         // ReverseName();
         // GiveMeAFiveNumbers();
-        GatherNumbers();
+        // GatherNumbers();
+        PrintThreeSmallestNumbers();
+    }
+
+    private static void PrintThreeSmallestNumbers()
+    {
+        const string ERROR_MESSAGE = "Invalid List";
+
+        Console.WriteLine("Give me numbers separated by comma");
+        var input = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            Console.WriteLine(ERROR_MESSAGE);
+            return;
+        }
+
+        var parts = input.Split(',');
+        var numbers = new List<int>();
+
+        foreach (var part in parts)
+        {
+            if (int.TryParse(part.Trim(), out int number))
+            {
+                numbers.Add(number);
+            }
+            else
+            {
+                Console.WriteLine(ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        if (numbers.Count < 5)
+        {
+            Console.WriteLine(ERROR_MESSAGE);
+            return;
+        }
+
+        var smallestNumbers = numbers.OrderBy(n => n).Take(3);
+
+        Console.WriteLine(string.Join(", ", smallestNumbers));
     }
 
     private static void GatherNumbers()
