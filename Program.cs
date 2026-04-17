@@ -10,7 +10,55 @@ class Program
         // GuessTheNumber();
 
         // LikesCounter();
-        ReverseName();
+        // ReverseName();
+        GiveMeAFiveNumbers();
+    }
+
+    private static void GiveMeAFiveNumbers()
+    {
+        var counter = 0;
+        var numbers = new List<int>();
+
+        while (true)
+        {
+            Console.WriteLine("Give me a number ({0})", counter + 1);
+            var input = Console.ReadLine();
+
+            if (!IsExist(numbers, input))
+            {
+                int.TryParse(input, out var number);
+                numbers.Add(number);
+
+                if (counter >= 4)
+                {
+                    break;
+                }
+
+                counter++;
+            }
+        }
+
+        numbers.Sort();
+        Console.WriteLine(string.Join(", ", numbers));
+    }
+
+    private static bool IsExist(List<int> numbers, string? input)
+    {
+        var isValid = int.TryParse(input, out var number);
+
+        if (isValid)
+        {
+            var index = numbers.IndexOf(number);
+
+            if (index != -1)
+            {
+                Console.WriteLine("The number {0} exists. Put anoter one, please.", number);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static void ReverseName()
