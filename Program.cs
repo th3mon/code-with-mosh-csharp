@@ -11,7 +11,34 @@ class Program
 
         // LikesCounter();
         // ReverseName();
-        GiveMeAFiveNumbers();
+        // GiveMeAFiveNumbers();
+        GatherNumbers();
+    }
+
+    private static void GatherNumbers()
+    {
+        var exitCommand = "quit";
+        var numbers = new List<int>();
+
+        while (true)
+        {
+            Console.WriteLine("Give me a number or put (Quit)");
+            var input = Console.ReadLine();
+
+            if (input?.ToLower() == exitCommand)
+            {
+                Console.WriteLine(string.Join(", ", numbers.Distinct()));
+
+                break;
+            }
+
+            var isValid = int.TryParse(input, out var number);
+
+            if (isValid)
+            {
+                numbers.Add(number);
+            }
+        }
     }
 
     private static void GiveMeAFiveNumbers()
