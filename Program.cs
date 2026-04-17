@@ -9,7 +9,29 @@ class Program
         // CountFactorial();
         // GuessTheNumber();
 
-        LikesCounter();
+        // LikesCounter();
+        ReverseName();
+    }
+
+    private static void ReverseName()
+    {
+        Console.WriteLine("Give me your name");
+        var name = Console.ReadLine();
+
+        if (name != null)
+        {
+            var nameAsArray = new char[name.Length];
+            var length = name.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                nameAsArray[i] = name[i];
+            }
+
+            var reversed = nameAsArray.Reverse();
+
+            Console.WriteLine(string.Join("", reversed));
+        }
     }
 
     private static void LikesCounter()
@@ -65,6 +87,14 @@ class Program
     private static void PrintList<T>(List<T> list)
     {
         foreach (var item in list)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+    private static void PrintCollection<T>(T[] arr)
+    {
+        foreach (var item in arr)
         {
             Console.WriteLine(item);
         }
