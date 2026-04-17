@@ -1,7 +1,5 @@
 ﻿namespace HelloWorld;
 
-using static System.Math;
-
 class Program
 {
     static void Main(string[] args)
@@ -10,14 +8,74 @@ class Program
         // NumberOrExit();
         // CountFactorial();
         // GuessTheNumber();
+
+        LikesCounter();
+    }
+
+    private static void LikesCounter()
+    {
+        var friends = EnterData("Put your friends name or put nothing to end program");
+        var isNullOrEmpty = friends?.Any() != true;
+
+        if (isNullOrEmpty)
+        {
+            return;
+        }
+
+        if (friends.Count == 1)
+        {
+            Console.WriteLine("{0} likes your post", friends[0]);
+        }
+        else if (friends.Count == 2)
+        {
+            Console.WriteLine("{0} and {1} like your post", friends[0], friends[1]);
+        }
+        else
+        {
+            Console.WriteLine(
+                "{0}, {1} like your post and {2} others like your post",
+                friends[0],
+                friends[1],
+                friends.Count - 2
+            );
+        }
+    }
+
+    private static List<string> EnterData(string message)
+    {
+        var exitCommand = "";
+        var data = new List<string>();
+
+        while (true)
+        {
+            Console.WriteLine(message);
+            var input = Console.ReadLine();
+
+            if (input == exitCommand)
+            {
+                break;
+            }
+
+            data.Add(input);
+        }
+
+        return data;
+    }
+
+    private static void PrintList<T>(List<T> list)
+    {
+        foreach (var item in list)
+        {
+            Console.WriteLine(item);
+        }
     }
 
     private static void DivisibleByThree()
     {
         var numbersLength = 100;
         var counter = 0;
-        
-        for (int i = 0; i < numbersLength; i++) 
+
+        for (int i = 0; i < numbersLength; i++)
         {
             if (i % 3 == 0)
             {
@@ -38,8 +96,9 @@ class Program
             Console.WriteLine("Put a number or type 'ok' to exit");
             var input = Console.ReadLine();
             var isValid = int.TryParse(input, out var number);
-            
-            if (isValid) sum += number;
+
+            if (isValid)
+                sum += number;
             if (input == exitWord)
             {
                 break;
@@ -67,17 +126,17 @@ class Program
             result *= j;
             j--;
         }
-        
+
         Console.WriteLine("The result is: {0}", result);
     }
-    
+
     private static void GuessTheNumber()
     {
         var random = new Random();
         var number = random.Next(1, 10);
         var chances = 4;
 
-        while (chances > 0) 
+        while (chances > 0)
         {
             Console.WriteLine("Guess a number between 1 and 10");
             var isValid = int.TryParse(Console.ReadLine(), out var guess);
@@ -87,10 +146,10 @@ class Program
                 Console.WriteLine("You are correct!\nThe number is {0}", number);
                 break;
             }
-            
+
             chances--;
         }
-        
+
         if (chances == 0)
             Console.WriteLine("You loose!");
     }
