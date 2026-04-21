@@ -139,12 +139,6 @@ class ListsExercises
     public static void LikesCounter()
     {
         var friends = EnterData("Put your friends name or put nothing to end program");
-        var isNullOrEmpty = friends?.Any() != true;
-
-        if (isNullOrEmpty)
-        {
-            return;
-        }
 
         if (friends.Count == 1)
         {
@@ -180,9 +174,10 @@ class ListsExercises
                 break;
             }
 
-            data.Add(input);
+            data.Add(input != null ? input : "");
         }
 
         return data;
     }
 }
+
