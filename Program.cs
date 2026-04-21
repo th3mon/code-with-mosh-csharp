@@ -1,4 +1,4 @@
-namespace HelloWorld;
+﻿namespace HelloWorld;
 
 class Program
 {
@@ -14,6 +14,8 @@ class Program
         // ListsExercises.GiveMeAFiveNumbers();
         // ListsExercises.GatherNumbers();
         // ListsExercises.PrintThreeSmallestNumbers();
+
+        StringUtility.UseSummarizeText();
     }
 
     private static void PrintList<T>(List<T> list)
