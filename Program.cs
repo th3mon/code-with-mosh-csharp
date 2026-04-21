@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        // DivisibleByThree();
-        // NumberOrExit();
-        // CountFactorial();
-        // GuessTheNumber();
+        ControlFlow.DivisibleByThree();
+        ControlFlow.NumberOrExit();
+        ControlFlow.CountFactorial();
+        ControlFlow.GuessTheNumber();
 
         // LikesCounter();
         // ReverseName();
