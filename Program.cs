@@ -17,20 +17,4 @@ class Program
 
         StringUtility.UseSummarizeText();
     }
-
-    private static void PrintList<T>(List<T> list)
-    {
-        foreach (var item in list)
-        {
-            Console.WriteLine(item);
-        }
-    }
-
-    private static void PrintCollection<T>(T[] arr)
-    {
-        foreach (var item in arr)
-        {
-            Console.WriteLine(item);
-        }
-    }
 }
